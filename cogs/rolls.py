@@ -1,4 +1,4 @@
-import discord, re, environ, os, random
+import discord, re, math, random
 from discord.ext import commands
 from discord import app_commands
 
@@ -65,7 +65,7 @@ class Rolls(commands.Cog):
             await interaction.response.send_message(embed=ERR_EMBED)
             return
         
-        if amount > 60 or amount < 1:
+        if amount > 100 or amount < 1:
             await interaction.response.send_message(embed=ERR_EMBED)
             return
         
@@ -78,11 +78,13 @@ class Rolls(commands.Cog):
             separate_rolls.append(dice_num)
             
         nick = interaction.user.nick
+
+        modifier = math.ceil(dice*0.04)
         
         for ind, r in enumerate(separate_rolls):
             if r == 1:
                 separate_rolls[ind] = f"\u001b[0;32m{r}\u001b[0;0m"
-            elif r >= dice-4:
+            elif r >= dice-modifier:
                 separate_rolls[ind] = f"\u001b[0;31m{r}\u001b[0;0m"
             else:
                 separate_rolls[ind] = f"\u001b[0;37m{r}\u001b[0;0m"
