@@ -15,7 +15,8 @@ ERROR_TEXTS = [
     "Moze powinienem zrobic licznik ile razy popełniłeś błąd",
     "Ej ale szczerze to bardzo dobrze ci idzie, liczą się chęci",
     "Nienawidze wiadomo czego i wiadomo kogo",
-    "Prosze cie zeby to był twój ostatni raz..."
+    "Prosze cie zeby to był twój ostatni raz...",
+    "Matko jedyna, nie no siwy dym idziesz do domu",
 ]
 
 SUCCESS_TEXTS = [
