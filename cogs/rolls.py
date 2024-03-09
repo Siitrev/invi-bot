@@ -29,6 +29,8 @@ SUCCESS_TEXTS = [
     "Mordeczko, ale ostre kości zostały rzucone :call_me: :sunglasses: ",
     "Siała baba mak, nie wiedziała jak, a dziad wiedział, nie powiedział, a to było tak...",
     "Gejmaster ma zawsze racje, nie możesz sie z nim kłócić i sprzeciwiać jego poleceniom :point_up::nerd:",
+    "Wiedziałeś, że krasnoludy wpisały do księgi uraz nawet górę?",
+    "Trudne sie wylosowało..."
 ]
 
 SUCC_EMBED = discord.Embed(title="Tajemny rzut poszedł do gejmastera!", color=discord.Color.green())
