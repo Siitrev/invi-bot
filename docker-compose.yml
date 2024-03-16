@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  main:
+    build: .
+    container_name: phantom-bot
+    environment:
+      - DISCORD_TOKEN
+      - APP_ID
