@@ -45,7 +45,7 @@ class Rolls(commands.Cog):
     @app_commands.describe(roll="Podaj ilość oraz kość. Poprawny format to [ile razy][k|d][ilość ścian kości]")
     async def dolacz(self, interaction: discord.Interaction, roll: str) -> None:
         text_channel = discord.utils.get(interaction.guild.text_channels, name="ukryty-rzut")
-        pattern = re.compile(r"^\d+[kd]\d+$", re.IGNORECASE)
+        pattern = re.compile(r"^\d*[kd]\d+$", re.IGNORECASE)
         is_vaild = re.match(pattern, roll)
         
         ERR_EMBED.description = random.choice(ERROR_TEXTS)
@@ -61,6 +61,8 @@ class Rolls(commands.Cog):
         else:
             rolls = roll.split("k")
         
+        if rolls[0] == "":
+            rolls[0] = 1
         amount = int(rolls[0])
         dice = int(rolls[1])
 
