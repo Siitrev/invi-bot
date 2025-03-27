@@ -1,7 +1,7 @@
 import os, environ, discord
 from discord.ext import commands
 
-class alkoBot(commands.Bot):
+class PhantomBot(commands.Bot):
     def __init__(self, intents):
         super().__init__(command_prefix="!", intents=intents, application_id=APP_ID)
 
@@ -30,6 +30,6 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-bot = alkoBot(intents=intents)
+bot = PhantomBot(intents=intents)
 
 bot.run(TOKEN)
