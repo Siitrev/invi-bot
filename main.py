@@ -19,7 +19,6 @@ class PhantomBot(commands.Bot):
     async def close(self):
         await super().close()
 
-
 env = environ.Env()
 env.read_env(".env")
 
