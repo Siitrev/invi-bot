@@ -43,7 +43,7 @@ class Rolls(commands.Cog):
 
     @app_commands.command(name="ukryty-rzut", description="Zakrec koscia wariacik")
     @app_commands.describe(roll="Podaj liczbę oraz kość. Poprawny format to [ile razy][k|d][liczba ścian kości]")
-    async def dolacz(self, interaction: discord.Interaction, roll: str) -> None:
+    async def rzut(self, interaction: discord.Interaction, roll: str) -> None:
         text_channel = discord.utils.get(interaction.guild.text_channels, name="ukryty-rzut")
         pattern = re.compile(r"^\d*[kd]\d+$", re.IGNORECASE)
         is_vaild = re.match(pattern, roll)
@@ -123,7 +123,7 @@ class Rolls(commands.Cog):
         
         text_channel = discord.utils.get(guild.text_channels, name="ukryty-rzut")
         
-        if text_channel == None:
+        if not text_channel:
             await guild.create_text_channel(
                 name="ukryty-rzut",
                 topic="Czego oczy nie widzą, tego sercu nie żal...",

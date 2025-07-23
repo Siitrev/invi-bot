@@ -6,14 +6,21 @@ class PhantomBot(commands.Bot):
         super().__init__(command_prefix="!", intents=intents, application_id=APP_ID)
 
         self.initial_extentions = ["cogs.rolls",
-                                    ]
+                                    "cogs.interactions"]
 
     async def setup_hook(self):
         for cog in self.initial_extentions:
             await self.load_extension(cog)
-        await bot.tree.sync()
+        await self.tree.sync()
 
     async def on_ready(self):
+        if not os.path.exists("data"):
+            os.mkdir("data")
+        
+        if not os.path.exists("data/urls.json"):
+            with open("data/urls.json", "w") as file:
+                file.write(r"{}")
+
         print(f"We've logged in as {self.user}")
 
     async def close(self):
