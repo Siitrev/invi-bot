@@ -1,0 +1,31 @@
+services:
+  discord-bot:
+    container_name: discord-bot
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - discord-net
+    
+  lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4-alpine
+    container_name: lavalink
+    restart: unless-stopped
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m
+      - SERVER_PORT=2333
+      - LAVALINK_SERVER_PASSWORD=${LAVALINK_PASSWORD:-qwerty}
+    volumes:
+      - ./application.yml:/opt/Lavalink/application.yml
+      - ./plugins/:/opt/Lavalink/plugins/
+    networks:
+      - discord-net
+    expose:
+      - 2333
+    ports:
+      - "2333:2333"
+  
+networks:
+  discord-net:
+    name: discord-net
